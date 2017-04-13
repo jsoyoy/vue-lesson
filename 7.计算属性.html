@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <p>原始数据：{{ message }}</p>
+        <p>计算后的数据：{{ reversedMessage }}</p>
+        <p>计算后的数据：{{ now() }}</p>
+    </div>
+
+    <div id="app-1">
+         <p>{{fullName}}</p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: '皮皮虾 我们走'
+            },
+            methods: {
+                now: function () {
+                    return Date.now()
+                }
+            },
+            computed: {
+                reversedMessage: function () {
+                    return this.message.split('').reverse().join('');
+                }
+            }
+        });
+        //#计算属性 set属性
+        var app2 = new Vue({
+            el: '#app-1',
+            data: {
+                firstName: 'Foo',
+                lastName: 'Bar'
+            },
+            computed: {
+                fullName: {
+                    get: function () {
+                        return this.firstName+''+this.lastName
+                    },
+                    set: function (name) {
+                        return name.split('').reverse().join('')
+                    }
+                }
+            }
+        });
+        /*
+        * 计算属性
+        *   #绑定普通属性一样在模板中绑定计算属性  reversedMessage依赖于message
+        *
+        *   #计算属性 vs method
+        *       计算属性 是基于它们的依赖进行缓存的 只要依赖的数据没发生变化，立即返回之前的计算结果，而不必再次执行该函数
+        *       method  只要发生重新渲染，method 调用总会执行该函数
+        *
+        *   #计算属性 vs Watched属性
+        *       
+        *   #计算属性 set属性
+        *
+        * 观察Watcher
+        *   #watch 响应数据变化  （当你想要在数据变化响应时，执行异步操作或开销较大的操作）
+        *
+        *   
+        *
+        *
+        *
+        *
+        * */
+    </script>
+</body>
+</html>

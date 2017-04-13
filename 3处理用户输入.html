@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app-5">
+        <p>{{msg}}</p>
+        <input type="button" v-on:click="reverseMessage" value="点我变帅">
+    </div>
+
+    <div id="app-6">
+        <p>{{msg}}</p>
+        <input type="text" v-model="msg">
+    </div>
+    <script>
+        var app5 = new Vue({
+            el: '#app-5',
+            data:{
+                msg: '皮皮虾，我们走'
+            },
+            methods:{
+                reverseMessage: function(){
+                    this.msg = this.msg.split('').reverse().join('')
+                }
+            }
+        });
+
+        var app6 = new Vue({
+            el:"#app-6",
+            data:{
+                msg:'sdsd'
+            }
+        });
+    </script>
+
+</body>
+</html>

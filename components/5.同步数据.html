@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <hello></hello>
+</div>
+<template id="tmpl">
+    <div>
+        <div>hello {{msg.name}}</div>
+        <world :n="msg"></world>
+    </div>
+</template>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        components: {
+            hello: {
+                template: '#tmpl',
+                data(){
+                    return {
+                        msg: {name:'vue'}
+                    }
+                },
+                components: {
+                    world: {
+                        template: '<span @click="update">world {{n.name}}</span>',
+                        methods: {
+                            update(){
+                                this.n.name = 'vue2'
+                            }
+                        },
+                        props: ['n']
+                    }
+                }
+            }
+
+        }
+    });
+</script>
+</body>
+</html>

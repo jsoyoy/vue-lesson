@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <hello>
+            <h1 slot="title">皮皮虾</h1>
+            <h2 slot="text">我们走</h2>
+        </hello>
+    </div>
+    <template id="hello">
+        <div>
+            <slot name="title"></slot>
+            <slot name="text"></slot>
+        </div>
+    </template>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data:{
+                comp:'hello',
+            },
+            components: {
+                hello: {
+                    template:'#hello'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

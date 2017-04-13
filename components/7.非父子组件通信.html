@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <hello></hello>
+        <hello1></hello1>
+    </div>
+    <template id="hello">
+        <div>hello <button @click="send">发送{{msg}}</button></div>
+    </template>
+    <template id="hello1">
+        <div>hello1 接受消息{{msg}}</div>
+    </template>
+    <script>
+        var Event = new Vue();
+        var app = new Vue({
+            el: '#app',
+            components: {
+                hello: {
+                    template:'#hello',
+                    data(){
+                        return {
+                            msg: '你好'
+                        }
+                    },
+                    methods: {
+                        send(){
+                            Event.$emit('消息',this.msg);
+                        }
+                    }
+                },
+                hello1: {
+                    template: '#hello1',
+                    mounted(){
+                        Event.$on('消息',(data) => {
+                            this.msg = data;
+                        })
+                    },
+                    data(){
+                        return {msg:''}
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

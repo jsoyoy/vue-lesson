@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{a}}</h1>
+    </div>
+
+<script>
+
+    /*
+     * 1.实例通过构造器生成
+     * 2.实例有属性和方法 通过 vm可访问 vm.$.. (前缀 $，以便与代理的 data 属性区分);
+     * 3.实例具有什么周期
+     * */
+
+
+    var data = {a:1}
+    var vm = new Vue({
+        el:'#app',
+        data: data,
+        created: function () {
+            console.log('开始创建');
+        },
+        mounted: function () {
+            console.log('dsa');
+        }
+    });
+
+    console.log(data.a);
+    console.log(vm.a)
+
+    data.a = 2;
+    console.log(data.a);
+    console.log(vm.a);
+
+    vm.a = 3;
+    console.log(data.a);
+    console.log(vm.$data.a)
+
+    console.log(vm);
+    console.log(vm.$data);   //$在外部访问实例的内部属性和方法
+
+
+</script>
+</body>
+</html>

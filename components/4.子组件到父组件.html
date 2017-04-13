@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <parent></parent>
+</div>
+
+<template id="app1">
+    <div>
+        <div>parent {{age}}</div>
+        <child @say="getAge"></child>
+    </div>
+</template>
+
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        components: {
+            parent: {
+                template: '#app1',
+                data(){
+                    return { age: 0}
+                },
+                methods:{
+                    getAge(data){ this.age = data}
+                },
+                components: {
+                    child: {
+                        template: '<span @click="sayAge">world</span>',
+                        methods: {
+                            sayAge(){ this.$emit('say',this.age) }
+                        },
+                        data(){
+                            return { age: 18 }
+                        }
+                    }
+                }
+            }
+
+        }
+    });
+</script>
+</body>
+</html>

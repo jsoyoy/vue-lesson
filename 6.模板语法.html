@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <script>
+        /*
+        * #1 插值
+        *   #文本
+        *       {{}} 随数据对象改变而改变 <span>Message: {{ msg }}</span>
+        *       v-once 借点一次性插值，不会更新  <span v-once>This will never change: {{ msg }}</span>
+        *   #纯HTML
+        *       v-html
+        *   #属性
+        *       v-bind
+        *   #js表达式
+        *       {{ok ? 'yes' : 'no';}}
+        *
+        *       
+        * #2 指令  指令（Directives）是带有 v- 前缀的特殊属性
+        *   #参数  在指令后以冒号指明                  缩写
+        *       属性: <a v-bind:href="url"></a>      :bind
+        *       事件：<a v-on:click="doSomething">    @click
+        *   #修饰符 半角句号 . 指明的特殊后缀
+        *       <form v-on:submit.prevent="onSubmit"></form> 
+        *
+        *
+        * #3 过滤器 由“ | ”符指示   过滤器设计目的就是用于文本转换。为了在其他指令中实现更复杂的数据变换，你应该使用计算属性。
+        *    mustache 插值   {{ message | capitalize }}
+        *    v-bind 表达式   <div v-bind:id="rawId | formatId"></div>
+        *    过滤器函数总接受表达式的值作为第一个参数
+        *    过滤器可串联   {{ message | filterA | filterB }}
+        *    过滤器可传参   {{ message | filterA('arg1', arg2) }}
+        *
+        *
+        *
+        *
+        * */
+    </script>
+
+</body>
+</html>
